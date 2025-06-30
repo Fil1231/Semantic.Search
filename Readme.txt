@@ -31,3 +31,16 @@ docker build --no-cache -t philipapostolov/postgres:17.5-pgvector .
 
 ## This is the way how to start Docker compose file 
 docker compose up -d
+
+
+###enable new postgress extension
+CREATE EXTENSION IF NOT EXISTS vector;
+
+#Create TABLE articles
+
+CREATE TABLE articles (
+    id SERIAL PRIMARY KEY,
+    url TEXT,
+    article TEXT,
+    article_embeddings VECTOR(1536)
+);
