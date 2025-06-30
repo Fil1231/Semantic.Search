@@ -22,3 +22,12 @@
 See requirements.txt for the list of required packages.
  wget -r -np -l 1 -A html http://www.actualno.com/
  
+
+
+ ## How to build Docker image 
+cd images/postgres
+docker build --no-cache -t philipapostolov/postgres:17.5-pgvector .
+
+
+## This is the way how to start Docker compose file 
+docker compose up -d
