@@ -44,3 +44,16 @@ CREATE TABLE articles (
     article TEXT,
     article_embeddings VECTOR(1536)
 );
+#start container with name ollama
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+
+# start a particular model
+docker exec -it ollama ollama pull nomic-embed-text
+
+#test if it works
+
+❯ curl http://localhost:11434/api/embeddings -d '{
+  "model": "nomic-embed-text",
+  "prompt": "Това е Новина от сайта на Актално"
+}'
+{"embedding":[-0.45627331733703613,0.37343624234199524,...]}
